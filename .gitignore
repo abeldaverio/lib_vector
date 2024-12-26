@@ -3,3 +3,4 @@ main.c
 *.gcda
 *.gcno
 unit_tests
+.vscode
