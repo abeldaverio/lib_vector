@@ -47,6 +47,8 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
+
+project:	$(NAME)
 	cp $(NAME) ../
 	cp include/vector.h ../../include/
 
@@ -75,4 +77,4 @@ tests_clean:
 	$(RM) coverage*
 	$(RM) unit_tests
 
-.PHONY: all clear fclean re tests_run tests_clean
+.PHONY: all clear fclean re tests_run tests_clean project
