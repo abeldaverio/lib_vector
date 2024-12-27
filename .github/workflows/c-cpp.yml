@@ -1,0 +1,20 @@
+name: LIB VECTOR CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build lib
+      - run: make
+    
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build and run tests
+      - run: make tests_run
