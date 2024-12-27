@@ -10,11 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: build lib
       - run: make
     
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: build and run tests
       - run: make tests_run
