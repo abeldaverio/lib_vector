@@ -16,6 +16,8 @@ jobs:
     
   test:
     runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker
     steps:
       - uses: actions/checkout@v4
       - name: build and run tests
