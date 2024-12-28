@@ -166,3 +166,36 @@ Test(multiple_concat, int_vector)
     free_vector(first_vector);
     free_vector(final_vector);
 }
+
+int int_sort(void *a, void *b)
+{
+    return *(int *)b - *(int *)a;
+}
+
+Test(simple_sort, int_vector)
+{
+    int *vector = init_vector(sizeof(int));
+    int to_fill[] = {5, 2, 4, 9, 4};
+    int soluce[] = {2, 4, 4, 5, 9};
+
+    for (int i = 0; i < 5; i++) {
+        vector = push_back_vector(vector, &to_fill[i]);
+    }
+    quick_sort_vector(vector, int_sort);
+    int_vector_equal(vector, soluce);
+    free_vector(vector);
+}
+
+Test(complex_sort, int_vector)
+{
+    int *vector = init_vector(sizeof(int));
+    int to_fill[] = {32, 43, 1, 43, -2, 43, 23, 5, 2, 4, 0, 9, 384, 8, 2, 5, 3, 4, 34, 21, 43, 53, 23};
+    int soluce[] = {-2, 0, 1, 2, 2, 3, 4, 4, 5, 5, 8, 9, 21, 23, 23, 32, 34, 43, 43, 43, 43, 53, 384 };
+
+    for (int i = 0; i < 23; i++) {
+        vector = push_back_vector(vector, &to_fill[i]);
+    }
+    quick_sort_vector(vector, int_sort);
+    int_vector_equal(vector, soluce);
+    free_vector(vector);
+}
