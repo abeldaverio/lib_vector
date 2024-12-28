@@ -29,8 +29,10 @@ jobs:
       image: epitechcontent/epitest-docker
     steps:
       - uses: actions/checkout@v4
-      - name: Update LLVM
+      - name: Fetch ASan Runtime
         run: |
-          apt-get install -y llvm-16 clang-16
+          mkdir -p /usr/lib/llvm-16/lib/clang/16/lib/linux/
+          curl -o /usr/lib/llvm-16/lib/clang/16/lib/linux/libclang_rt.asan_static-x86_64.a \
+            http://releases.llvm.org/16.0.0/libclang_rt.asan_static-x86_64.a
       - name: build and run tests with clang address sanatiser
         run: make asan_tests
