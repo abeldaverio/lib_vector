@@ -29,5 +29,9 @@ jobs:
       image: epitechcontent/epitest-docker
     steps:
       - uses: actions/checkout@v4
+      - name: Update LLVM
+        run: |
+          apt-get update
+          apt-get install -y llvm-16 clang-16
       - name: build and run tests with clang address sanatiser
         run: make asan_tests
