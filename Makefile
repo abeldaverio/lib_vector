@@ -68,6 +68,9 @@ $(TEST_NAME):	$(OBJ_TEST)
 	$(OBJ_TEST) $(SRC)	\
 	$(TEST_FLAGS) $(TEST_LIB)
 
+asan_tests: CC = clang -fsanitize=address
+asan_tests: tests_run
+
 tests_run:	$(TEST_NAME)
 	./$(TEST_NAME)
 

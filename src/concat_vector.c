@@ -10,8 +10,8 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <string.h>
-#include "vector.h"
 #include <stdio.h>
+#include "vector.h"
 
 static void **get_parameter_vectors(int nb_of_vectors, va_list parameters_infos)
 {

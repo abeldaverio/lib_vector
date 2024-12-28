@@ -10,6 +10,19 @@
 #include <stdbool.h>
 #include "vector.h"
 
+static bool swap_vector_element(vector_t *vect, int i, int j)
+{
+    void *vector = vect + 1;
+    void *tmp = calloc(1, vect->size);
+
+    if (!tmp)
+        return false;
+    memcpy(tmp, vector + i * vect->size, vect->size);
+    memcpy(vector + i * vect->size, vector + j * vect->size, vect->size);
+    memcpy(vector + j * vect->size, tmp, vect->size);
+    free(tmp);
+    return true;
+}
 
 static int partition(vector_t *vect, int low, int high,
     int (*function)(void *first, void *second))

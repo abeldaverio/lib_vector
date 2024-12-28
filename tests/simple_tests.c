@@ -48,7 +48,7 @@ Test(simple_size, vector)
     for (int i = 0; i < removed; i++) {
         popback_vector(array);
     }
-    cr_assert_eq(vector_size(array), added - removed);
+    cr_assert_eq((int)vector_size(array), added - removed);
     free_vector(array);
 }
 
