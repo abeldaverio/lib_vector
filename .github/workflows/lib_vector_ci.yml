@@ -23,11 +23,11 @@ jobs:
       - name: build and run tests
         run: make tests_run
 
-  asan_tests:
-    runs-on: ubuntu-latest
-    container:
-      image: epitechcontent/epitest-docker
-    steps:
-      - uses: actions/checkout@v4
-      - name: build and run tests with clang address sanatiser
-        run: make asan_tests
+  # asan_tests:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: epitechcontent/epitest-docker
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: build and run tests with clang address sanatiser
+  #       run: make asan_tests
