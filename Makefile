@@ -20,6 +20,7 @@ SRC	=	$(addprefix src/,\
 			pop_front_vector.c	\
 			pop_index_vector.c	\
 			concat_vector.c	\
+			quick_sort_vector.c	\
 		)
 
 OBJ	=	$(SRC:.c=.o)
