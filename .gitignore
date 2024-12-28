@@ -4,3 +4,4 @@ main.c
 *.gcno
 unit_tests
 .vscode
+a.out

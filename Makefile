@@ -20,6 +20,7 @@ SRC	=	$(addprefix src/,\
 			pop_front_vector.c	\
 			pop_index_vector.c	\
 			concat_vector.c	\
+			quick_sort_vector.c	\
 		)
 
 OBJ	=	$(SRC:.c=.o)
@@ -66,6 +67,9 @@ $(TEST_NAME):	$(OBJ_TEST)
 	$(CC) -o $(TEST_NAME) $(CFLAGS) $(CPPFLAGS)	\
 	$(OBJ_TEST) $(SRC)	\
 	$(TEST_FLAGS) $(TEST_LIB)
+
+asan_tests: CC = clang -fsanitize=address
+asan_tests: tests_run
 
 tests_run:	$(TEST_NAME)
 	./$(TEST_NAME)

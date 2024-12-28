@@ -48,7 +48,7 @@ Test(simple_size, vector)
     for (int i = 0; i < removed; i++) {
         popback_vector(array);
     }
-    cr_assert_eq(vector_size(array), added - removed);
+    cr_assert_eq((int)vector_size(array), added - removed);
     free_vector(array);
 }
 
@@ -185,4 +185,39 @@ Test(multiple_concat, vector)
     cr_assert_str_eq(final_vector, "abcabcabcabc");
     free_vector(first_vector);
     free_vector(final_vector);
+}
+
+int sort(void *a, void *b)
+{
+    return *(char *)b - *(char *)a;
+}
+
+Test(simple_sort, vector)
+{
+    char *vector = init_vector(sizeof(char));
+    char *to_fill = "azerty";
+    char end = '\0';
+
+    for (int i = 0; to_fill[i]; i++) {
+        vector = push_back_vector(vector, &to_fill[i]);
+    }
+    quick_sort_vector(vector, sort);
+    vector = push_back_vector(vector, &end);
+    cr_assert_str_eq(vector, "aertyz");
+    free_vector(vector);
+}
+
+Test(complex_sort, vector)
+{
+    char *vector = init_vector(sizeof(char));
+    char *to_fill = "azertyuiopqsdfghjklmwxcvbn";
+    char end = '\0';
+
+    for (int i = 0; to_fill[i]; i++) {
+        vector = push_back_vector(vector, &to_fill[i]);
+    }
+    quick_sort_vector(vector, sort);
+    vector = push_back_vector(vector, &end);
+    cr_assert_str_eq(vector, "abcdefghijklmnopqrstuvwxyz");
+    free_vector(vector);
 }
