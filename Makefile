@@ -8,6 +8,7 @@
 SRC	=	$(addprefix src/,\
             $(addprefix utils/,\
                 get_vector.c    \
+                compare_bytes.c	\
             )   \
 			init_vector.c	\
 			free_vector.c	\
@@ -20,6 +21,11 @@ SRC	=	$(addprefix src/,\
 			pop_front_vector.c	\
 			pop_index_vector.c	\
 			concat_vector.c	\
+<<<<<<< Updated upstream
+=======
+			quick_sort_vector.c	\
+			index_of_vector.c	\
+>>>>>>> Stashed changes
 		)
 
 OBJ	=	$(SRC:.c=.o)
