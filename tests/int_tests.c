@@ -129,8 +129,6 @@ Test(simple_pop_index, int_vector)
     free_vector(array);
 }
 
-
-#include <stdio.h>
 Test(simple_concat, int_vector)
 {
     int *first_vector = init_vector(sizeof(int));
@@ -207,10 +205,11 @@ Test(index_of, int_vector)
     int not_here = 54;
 
     for (int i = 0; i < 3; i++) {
-        push_back_vector(vector, &to_fill[i]);
+        vector = push_back_vector(vector, &to_fill[i]);
     }
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
+    free_vector(vector);
 }
 
 bool keep_even(void *n)
@@ -225,8 +224,10 @@ Test(filter, int_vector)
     int soluce[] = {0, 2, 4, 6};
 
     for (int i = 0; i < 7; i++) {
-        push_back_vector(vector, &to_fill[i]);
+        vector = push_back_vector(vector, &to_fill[i]);
     }
     char *new_vector = filter_vector(vector, keep_even);
     int_vector_equal(new_vector, soluce);
+    free_vector(vector);
+    free_vector(new_vector);
 }

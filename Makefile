@@ -24,6 +24,7 @@ SRC	=	$(addprefix src/,\
 			quick_sort_vector.c	\
 			index_of_vector.c	\
 			filter_vector.c	\
+			rem_duplicates_vector.c	\
 		)
 
 OBJ	=	$(SRC:.c=.o)
@@ -72,7 +73,7 @@ $(TEST_NAME):	$(OBJ_TEST)
 	$(TEST_FLAGS) $(TEST_LIB)
 
 asan_tests: CC = clang -fsanitize=address
-asan_tests: tests_run
+asan_tests: fclean	tests_run
 
 tests_run:	$(TEST_NAME)
 	./$(TEST_NAME)

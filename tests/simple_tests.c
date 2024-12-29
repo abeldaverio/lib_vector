@@ -230,10 +230,11 @@ Test(index_of, vector)
     char not_here = 'i';
 
     for (int i = 0; to_fill[i]; i++) {
-        push_back_vector(vector, &to_fill[i]);
+        vector = push_back_vector(vector, &to_fill[i]);
     }
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
+    free_vector(vector);
 }
 
 bool keep_upper_case(void *c)
@@ -248,9 +249,27 @@ Test(filter, vector)
     char end = '\0';
 
     for (int i = 0; to_fill[i]; i++) {
-        push_back_vector(vector, &to_fill[i]);
+        vector = push_back_vector(vector, &to_fill[i]);
     }
     char *new_vector = filter_vector(vector, keep_upper_case);
     new_vector = push_back_vector(new_vector, &end);
     cr_assert_str_eq(new_vector, "ABCD");
+    free_vector(new_vector);
+    free_vector(vector);
+}
+
+Test(rem_duplicates, vector)
+{
+    char *vector = init_vector(sizeof(char));
+    char *to_fill = "aabbccddabcd";
+    char end = '\0';
+
+    for (int i = 0; to_fill[i]; i++) {
+        vector = push_back_vector(vector, &to_fill[i]);
+    }
+    vector = push_back_vector(vector, &end);
+    void *new_vector = rem_duplicates_vector(vector);
+    cr_assert_str_eq(new_vector, "abcd");
+    free_vector(new_vector);
+    free_vector(vector);
 }
