@@ -49,7 +49,7 @@ Test(simple_size, vector)
     for (int i = 0; i < removed; i++) {
         popback_vector(array);
     }
-    cr_assert_eq(vector_size(array), added - removed);
+    cr_assert_eq((int)vector_size(array), added - removed);
     free_vector(array);
 }
 
@@ -187,8 +187,6 @@ Test(multiple_concat, vector)
     free_vector(first_vector);
     free_vector(final_vector);
 }
-<<<<<<< Updated upstream
-=======
 
 int sort(void *a, void *b)
 {
@@ -237,4 +235,3 @@ Test(index_of, vector)
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
 }
->>>>>>> Stashed changes

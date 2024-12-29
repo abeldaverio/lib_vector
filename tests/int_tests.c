@@ -10,6 +10,7 @@
 #include <criterion/internal/assert.h>
 #include <criterion/internal/test.h>
 #include "../include/vector.h"
+#include "vector.h"
 
 static bool int_vector_equal(void *vector, int *comparaison)
 {
@@ -58,7 +59,7 @@ Test(simple_size, int_vector)
     for (int i = 0; i < removed; i++) {
         popback_vector(array);
     }
-    cr_assert_eq(vector_size(array), added - removed);
+    cr_assert_eq((int)vector_size(array), added - removed);
     free_vector(array);
 }
 
@@ -128,6 +129,8 @@ Test(simple_pop_index, int_vector)
     free_vector(array);
 }
 
+
+#include <stdio.h>
 Test(simple_concat, int_vector)
 {
     int *first_vector = init_vector(sizeof(int));
@@ -136,13 +139,11 @@ Test(simple_concat, int_vector)
     int first[] = {1, 2, 3};
     int second[] = {4, 5, 6};
     int compare[] = {1, 2, 3, 4, 5, 6};
-    int end = '\0';
 
     for (int i = 0; i < 3; ++i) {
         push_back_vector(first_vector, &first[i]);
         push_back_vector(second_vector, &second[i]);
     }
-    push_back_vector(second_vector, &end);
     final_vector = concat_vector(2, first_vector, second_vector);
     int_vector_equal(final_vector, compare);
     free_vector(first_vector);
@@ -165,8 +166,6 @@ Test(multiple_concat, int_vector)
     free_vector(first_vector);
     free_vector(final_vector);
 }
-<<<<<<< Updated upstream
-=======
 
 int int_sort(void *a, void *b)
 {
@@ -213,4 +212,3 @@ Test(index_of, int_vector)
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
 }
->>>>>>> Stashed changes

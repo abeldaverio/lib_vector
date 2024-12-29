@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -38,5 +39,6 @@ vector_t *_get_vector_struct(void *vector);
 bool _sort(vector_t *vect, int low, int high,
     int (*function)(void *first, void *second));
 bool _compare_bytes(char *first, char *second, size_t n);
+
 
 static const size_t INIT_SIZE = 5;
