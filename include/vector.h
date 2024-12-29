@@ -29,11 +29,6 @@ void *push_index_vector(void *vector, size_t index, void *data);
 void popfront_vector(void *vector);
 void pop_index_vector(void *vector, size_t index);
 void *concat_vector(int nb_of_vectors, ...);
-<<<<<<< Updated upstream
-
-// internal used functions
-vector_t *_get_vector_struct(void *vector);
-=======
 void quick_sort_vector(void *vector,
     int (*function)(void *first, void *second));
 ssize_t index_of_vector(void *vector, void *to_find);
@@ -43,6 +38,5 @@ vector_t *_get_vector_struct(void *vector);
 bool _sort(vector_t *vect, int low, int high,
     int (*function)(void *first, void *second));
 bool _compare_bytes(char *first, char *second, size_t n);
->>>>>>> Stashed changes
 
 static const size_t INIT_SIZE = 5;
