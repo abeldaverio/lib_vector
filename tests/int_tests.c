@@ -212,3 +212,21 @@ Test(index_of, int_vector)
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
 }
+
+bool keep_even(void *n)
+{
+    return (*(int *)n % 2) == 0;
+}
+
+Test(filter, int_vector)
+{
+    int *vector = init_vector(sizeof(int));
+    int to_fill[] = {0, 1, 2, 3, 4, 5, 6};
+    int soluce[] = {0, 2, 4, 6};
+
+    for (int i = 0; i < 7; i++) {
+        push_back_vector(vector, &to_fill[i]);
+    }
+    char *new_vector = filter_vector(vector, keep_even);
+    int_vector_equal(new_vector, soluce);
+}

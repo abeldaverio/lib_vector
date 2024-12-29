@@ -23,6 +23,7 @@ SRC	=	$(addprefix src/,\
 			concat_vector.c	\
 			quick_sort_vector.c	\
 			index_of_vector.c	\
+			filter_vector.c	\
 		)
 
 OBJ	=	$(SRC:.c=.o)

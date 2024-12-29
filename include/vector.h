@@ -33,6 +33,8 @@ void *concat_vector(int nb_of_vectors, ...);
 void quick_sort_vector(void *vector,
     int (*function)(void *first, void *second));
 ssize_t index_of_vector(void *vector, void *to_find);
+void *filter_vector(void *vector, bool (*function)(void *value));
+void *rem_duplicates_vector(void *vector);
 
 // internal used functions
 vector_t *_get_vector_struct(void *vector);

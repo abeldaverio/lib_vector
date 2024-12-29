@@ -229,9 +229,28 @@ Test(index_of, vector)
     char *to_fill = "azerty";
     char not_here = 'i';
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; to_fill[i]; i++) {
         push_back_vector(vector, &to_fill[i]);
     }
     cr_assert_eq(index_of_vector(vector, &vector[1]), 1);
     cr_assert_eq(index_of_vector(vector, &not_here), -1);
+}
+
+bool keep_upper_case(void *c)
+{
+    return ('A' <= *(char *)c) && (*(char *)c <= 'Z') ? true : false;
+}
+
+Test(filter, vector)
+{
+    char *vector = init_vector(sizeof(char));
+    char *to_fill = "AaBbCcDd";
+    char end = '\0';
+
+    for (int i = 0; to_fill[i]; i++) {
+        push_back_vector(vector, &to_fill[i]);
+    }
+    char *new_vector = filter_vector(vector, keep_upper_case);
+    new_vector = push_back_vector(new_vector, &end);
+    cr_assert_str_eq(new_vector, "ABCD");
 }
